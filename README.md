@@ -17,13 +17,13 @@ This control surface manages all global, channel strip and operator controls usi
 * 6 pages of controls representing a channel / voice in the YM2612
 * 4 pages per voice of FM operator controls
 
-# Template files
-The provided template file(s) are binary encoded.
+# Layout files
+The provided layout file(s) are binary encoded.
 
 ### Lua scripts
-This template makes heavy utilization of Lua scripting in place of TouchOSC's built in MIDI. It was necessary to support automatically changing the MIDI channel of a control based on the assigned page. Scripts used for each control have been provided as separate files for parsibility.
+This layout makes heavy utilization of Lua scripting in place of TouchOSC's built in MIDI. It was necessary to support automatically changing the MIDI channel of a control based on the assigned page. Scripts used for each control have been provided as separate files for parsibility.
 
-If you make changes to the lua files, be sure to test them in your own template in the appropriate control.
+If you make changes to the lua files, be sure to test them in your own layout in the appropriate control.
 
 ### Documentation
 
