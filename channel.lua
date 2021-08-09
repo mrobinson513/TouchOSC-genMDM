@@ -1,8 +1,13 @@
--- Some attempt at a Lua script
+controls = self:findAllByProperty('tag', 'channel', true)
 
-
--- Use the page name as a reference for the MIDI channel
--- Set in a Pager control
-MIDI_CHANNEL = tonumber(control.properties.page)
-
-control:setValueProperty(, property, value)
+function onValueChanged(key)
+  if key == 'page' then
+    MIDI_CHANNEL = self.values[key] + 1
+    print('MIDI Channel: ', MIDI_CHANNEL)
+    for i=1,#controls do
+      local control = controls[i]
+      print('Name: ', control.name)
+      control:notify('CHANNEL', MIDI_CHANNEL)
+    end
+  end
+end
