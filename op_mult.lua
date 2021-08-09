@@ -1,3 +1,5 @@
+-- Control type: Radial
+
 OPERATOR_PAGE = self.parent.parent
 CHANNEL_PAGE = OPERATOR_PAGE.parent.parent
 OP_NUM, CH_PAGE = tonumber(OPERATOR_PAGE.values.page), tonumber(CHANNEL_PAGE.values.page)
