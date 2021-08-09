@@ -1,14 +1,13 @@
--- Control type: Radio with 8 steps
+-- Control type: Radial
+
 CHANNEL_PAGE = self.parent.parent
 CONNS = {true, false, false, false, false}
 PAGE = tonumber(channel_page.values.page)
-CC_NUM = 14 -- FM Algorithm
-STEPS = self.properties.steps
-SCALE = STEPS / 128
+CC_NUM = 81 -- Pitch Bend Amount
 
-function onValueChanged(key)
+function onValueChanged(key)  
   if key == 'x' then
-    CC_VAL = self.values[key] * SCALE
+    CC_VAL = math.ceil(self.values[key] * 128)
     print(
     'MIDI Channel: ', PAGE + 1,
     'Continuous Controller: ', CC_NUM, 

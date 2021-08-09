@@ -1,12 +1,13 @@
--- Control type: Radio with 8 steps
+-- Control type: Radio with 4 steps
+
 CHANNEL_PAGE = self.parent.parent
 CONNS = {true, false, false, false, false}
 PAGE = tonumber(channel_page.values.page)
-CC_NUM = 14 -- FM Algorithm
+CC_NUM = 77 -- Pitch Bend Amount
 STEPS = self.properties.steps
 SCALE = STEPS / 128
 
-function onValueChanged(key)
+function onValueChanged(key)  
   if key == 'x' then
     CC_VAL = self.values[key] * SCALE
     print(
