@@ -1,4 +1,6 @@
 -- Global controls always send on channel 1. No reference to `page` is needed
+-- Control type: Button/Toggle Press
+-- Can use TouchOSC built-in MIDI messages. This script is for reference
 
 CC_NUM = 74 -- Global LFO Enable
 

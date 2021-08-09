@@ -3,8 +3,10 @@
 
 -- Can use TouchOSC built-in MIDI messages. This script is for reference
 
+-- DANGER ZONE, only use if you don't mind things will sound fucky
+-- Also affects PSG sound chip
 
-CC_NUM = 1 -- Global LFO Enable
+CC_NUM = 85 -- Global LFO Enable
 
 function onValueChanged(key)
   if key == 'x' then
