@@ -8,14 +8,16 @@ CC_NUM = 59 -- Second Amp LVL (sustain) CC for OP1, range 59-62
 
 function onValueChanged(key)
   if key == 'x' then
-    CC_VAL = self.values[key]
+    CC_VAL = math.ceil(self.values[key] * 128)
     print(
     'MIDI Channel: ', CH_PAGE + 1,
     'FM Operator: ', OP_NUM + 1,
     'Continuous Controller: ', CC_NUM + OP_NUM, 
     'CC Value: ', math.ceil(CC_VAL * 128)
     )
-    sendMIDI({ MIDIMessageType.CONTROLCHANGE + CH_PAGE, CC_NUM + OP_NUM, CC_VAL })
+    sendMIDI({ 
+      MIDIMessageType.CONTROLCHANGE + CH_PAGE, 
+      CC_NUM + OP_NUM, 
+      CC_VAL })
   end
 end
-

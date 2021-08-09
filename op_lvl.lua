@@ -13,8 +13,11 @@ function onValueChanged(key)
     'MIDI Channel: ', CH_PAGE + 1,
     'FM Operator: ', OP_NUM + 1,
     'Continuous Controller: ', CC_NUM + OP_NUM, 
-    'CC Value: ', CC_VAL
+    'CC Value: ', math.ceil(CC_VAL * 128)
     )
-    sendMIDI({ MIDIMessageType.CONTROLCHANGE + CH_PAGE, CC_NUM + OP_NUM, CC_VAL })
+    sendMIDI({ 
+      MIDIMessageType.CONTROLCHANGE + CH_PAGE, 
+      CC_NUM + OP_NUM, 
+      CC_VAL })
   end
 end
