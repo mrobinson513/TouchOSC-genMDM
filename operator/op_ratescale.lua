@@ -2,19 +2,21 @@
 
 OPERATOR_PAGE = self.parent.parent
 CHANNEL_PAGE = OPERATOR_PAGE.parent.parent
-OP_NUM, CH_PAGE = tonumber(OPERATOR_PAGE.values.page), tonumber(CHANNEL_PAGE.values.page)
+OP_NUM = tonumber(OPERATOR_PAGE.values.page)
+CH_PAGE = tonumber(CHANNEL_PAGE.values.page)
+
 SCALE = 128 / self.properties.steps
 
 CC_NUM = 39 -- Rate Scale CC for OP1, range 39-42
 
 function onValueChanged(key)
   if key == 'x' then
-    CC_VAL = self.values[key] * SCALE
+    local CC_VAL = self.values[key] * SCALE
     print(
     'MIDI Channel: ', CH_PAGE + 1,
     'FM Operator: ', OP_NUM + 1,
     'Continuous Controller: ', CC_NUM + OP_NUM, 
-    'CC Value: ', math.ceil(CC_VAL * 128)
+    'CC Value: ', CC_VAL
     )
     sendMIDI({ 
       MIDIMessageType.CONTROLCHANGE + CH_PAGE, 

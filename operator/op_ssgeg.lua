@@ -6,11 +6,13 @@
 
 OPERATOR_PAGE = self.parent.parent
 CHANNEL_PAGE = OPERATOR_PAGE.parent.parent
-OP_NUM, CH_PAGE = tonumber(OPERATOR_PAGE.values.page), tonumber(CHANNEL_PAGE.values.page)
-CC_NUM = 90 -- SSG-EG patterns Operator 1, range 90-93
+OP_NUM = tonumber(OPERATOR_PAGE.values.page)
+CH_PAGE = tonumber(CHANNEL_PAGE.values.page)
 
 SSG_ON = 32
 SSG_SCALE = 4
+
+CC_NUM = 90 -- SSG-EG patterns Operator 1, range 90-93
 
 function onValueChanged(key)
   if key == 'x' then

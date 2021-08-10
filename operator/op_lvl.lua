@@ -2,16 +2,18 @@
 
 OPERATOR_PAGE = self.parent.parent
 CHANNEL_PAGE = OPERATOR_PAGE.parent.parent
-OP_NUM, CH_PAGE = tonumber(OPERATOR_PAGE.values.page), tonumber(CHANNEL_PAGE.values.page)
-
+OP_NUM = tonumber(OPERATOR_PAGE.values.page)
+CH_PAGE = tonumber(CHANNEL_PAGE.values.page)
+print(OP_NUM)
+print(CH_PAGE)
 CC_NUM = 16 -- Total Level CC for OP1, range 16-19
 
 function onValueChanged(key)
   if key == 'x' then
-    CC_VAL = math.ceil(self.values[key] * 128)
+    local CC_VAL = math.ceil(self.values[key] * 128)
     print(
-    'MIDI Channel: ', CH_PAGE + 1,
-    'FM Operator: ', OP_NUM + 1,
+    'MIDI Channel: ', CH_PAGE,
+    'FM Operator: ', OP_NUM,
     'Continuous Controller: ', CC_NUM + OP_NUM, 
     'CC Value: ', CC_VAL
     )

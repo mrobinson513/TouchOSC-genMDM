@@ -2,13 +2,14 @@
 
 OPERATOR_PAGE = self.parent.parent
 CHANNEL_PAGE = OPERATOR_PAGE.parent.parent
-OP_NUM, CH_PAGE = tonumber(OPERATOR_PAGE.values.page), tonumber(CHANNEL_PAGE.values.page)
+OP_NUM = tonumber(OPERATOR_PAGE.values.page)
+CH_PAGE = tonumber(CHANNEL_PAGE.values.page)
 
-CC_NUM = 59 -- Second Amp LVL (sustain) CC for OP1, range 59-62
+CC_NUM = 59 -- Release Rate CC for OP1, range 59-62
 
 function onValueChanged(key)
   if key == 'x' then
-    CC_VAL = math.ceil(self.values[key] * 128)
+    local CC_VAL = math.ceil(self.values[key] * 128)
     print(
     'MIDI Channel: ', CH_PAGE + 1,
     'FM Operator: ', OP_NUM + 1,

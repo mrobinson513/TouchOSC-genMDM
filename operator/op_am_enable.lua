@@ -2,13 +2,14 @@
 
 OPERATOR_PAGE = self.parent.parent
 CHANNEL_PAGE = OPERATOR_PAGE.parent.parent
-OP_NUM, CH_PAGE = tonumber(OPERATOR_PAGE.values.page), tonumber(CHANNEL_PAGE.values.page)
+OP_NUM = tonumber(OPERATOR_PAGE.values.page)
+CH_PAGE = tonumber(CHANNEL_PAGE.values.page)
 
 CC_NUM = 70 -- Amp Mod enable CC for OP1, range 70-73
 
 function onValueChanged(key)
     if key == 'x' then
-      CC_VAL = self.values[key] * 127
+      local CC_VAL = self.values[key] * 127
       print(
       'MIDI Channel: ', CH_PAGE + 1,
       'FM Operator: ', OP_NUM + 1,

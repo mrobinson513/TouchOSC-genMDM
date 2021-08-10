@@ -2,6 +2,7 @@
 CHANNEL_PAGE = self.parent.parent
 PAGE = tonumber(CHANNEL_PAGE.values.page)
 CC_NUM = 14 -- FM Algorithm
+
 SCALE = 128 / self.properties.steps
 
 function onValueChanged(key)
