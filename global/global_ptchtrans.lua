@@ -11,6 +11,11 @@ CC_NUM = 85 -- Global LFO Enable
 function onValueChanged(key)
   if key == 'x' then
     CC_VAL = math.ceil(self.values[key] * 128)
+    print(
+    'MIDI Channel: ', PAGE + 1,
+    'Continuous Controller: ', CC_NUM, 
+    'CC Value: ', CC_VAL
+    )
     sendMIDI({ MIDIMessageType.CONTROLCHANGE, CC_NUM, CC_VAL })
   end
 end

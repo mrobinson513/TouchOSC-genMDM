@@ -2,7 +2,7 @@
 
 CHANNEL_PAGE = self.parent.parent
 CONNS = {true, false, false, false, false}
-PAGE = tonumber(channel_page.values.page)
+PAGE = tonumber(CHANNEL_PAGE.values.page)
 CC_NUM = 81 -- Pitch Bend Amount
 
 function onValueChanged(key)  

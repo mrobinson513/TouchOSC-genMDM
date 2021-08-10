@@ -1,10 +1,8 @@
 -- Control type: Radio with 8 steps
 CHANNEL_PAGE = self.parent.parent
-CONNS = {true, false, false, false, false}
-PAGE = tonumber(channel_page.values.page)
+PAGE = tonumber(CHANNEL_PAGE.values.page)
 CC_NUM = 14 -- FM Algorithm
-STEPS = self.properties.steps
-SCALE = STEPS / 128
+SCALE = 128 / self.properties.steps
 
 function onValueChanged(key)
   if key == 'x' then

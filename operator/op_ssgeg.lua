@@ -17,14 +17,14 @@ function onValueChanged(key)
 -- whenever x is above zero, add 32 to the CC value times (x - 1) * 4.
 -- Adding 32 pushes the value into the "ON" range; 0-31 are "OFF"
     if self.values[key] > 0 then
-      CC_VAL = SSG_ON + ((self.values[key] - 1) * SCALE)
+      CC_VAL = SSG_ON + ((self.values[key] - 1) * SSG_SCALE)
     else
       CC_VAL = 0
     end
     print(
-    'MIDI Channel: ', PAGE + 1,
+    'MIDI Channel: ', CH_PAGE + 1,
     'Continuous Controller: ', CC_NUM, 
     'CC Value: ', CC_VAL)
-    sendMIDI({ MIDIMessageType.CONTROLCHANGE + PAGE, CC_NUM, CC_VAL })
+    sendMIDI({ MIDIMessageType.CONTROLCHANGE + CH_PAGE, CC_NUM, CC_VAL })
   end
 end
