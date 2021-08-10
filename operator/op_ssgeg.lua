@@ -1,7 +1,7 @@
 -- Control type: Radial with 9 steps
 -- There are 8 patterns to choose from
 -- This script works around a bug in GenMDM where the CC values don't scale as expected, where:
--- See GenMDM.ods (soon to be genmdm.md) for details and mapping
+-- See GenMDM.ods (soon to be ssg-eg.md) for details and mapping
 
 
 OPERATOR_PAGE = self.parent.parent
