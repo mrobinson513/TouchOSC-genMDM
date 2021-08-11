@@ -1,5 +1,5 @@
 -- Control type: Radial
-
+-- Channel controls do not increment CC numbers, only the channel
 CC_NUM = 15 -- FM Feedback
 
 function onValueChanged(key)
@@ -7,7 +7,7 @@ function onValueChanged(key)
     CHANNEL_PAGE = self.parent.parent
     PAGE = tonumber(CHANNEL_PAGE.values.page)
     CC_VAL = math.ceil(self.values[key] * 128)
-    
+
     print(
     'MIDI Channel: ', PAGE + 1,
     'Continuous Controller: ', CC_NUM,

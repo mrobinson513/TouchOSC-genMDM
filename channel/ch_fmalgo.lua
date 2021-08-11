@@ -1,5 +1,5 @@
 -- Control type: Radio with 8 steps
-
+-- Channel controls do not increment CC numbers, only the channel
 CC_NUM = 14 -- FM Algorithm
 
 SCALE = 128 / self.properties.steps
@@ -9,7 +9,7 @@ function onValueChanged(key)
     CHANNEL_PAGE = self.parent.parent
     PAGE = tonumber(CHANNEL_PAGE.values.page)
     CC_VAL = self.values[key] * SCALE
-    
+
     print(
     'MIDI Channel: ', PAGE + 1,
     'Continuous Controller: ', CC_NUM,
