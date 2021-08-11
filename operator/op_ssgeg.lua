@@ -12,7 +12,15 @@ CH_PAGE = tonumber(CHANNEL_PAGE.values.page)
 SSG_ON = 32
 SSG_SCALE = 4
 
-CC_NUM = 90 -- SSG-EG patterns Operator 1, range 90-93
+BASE_CC = 90 -- SSG-EG patterns Operator 1, range 90-93
+CC_NUM = BASE_CC + OP_NUM
+
+print(
+  '\nPage ID: ', CH_PAGE,
+  '\nOperator ID: ', OP_NUM,
+  '\nBase CC#: ', BASE_CC,
+  '\nCurrent CC#: ', CC_NUM
+)
 
 function onValueChanged(key)
   if key == 'x' then
@@ -24,9 +32,14 @@ function onValueChanged(key)
       CC_VAL = 0
     end
     print(
-    'MIDI Channel: ', CH_PAGE + 1,
+    'MIDI Channel: ', CH_PAGE,
+    'FM Operator: ', OP_NUM,
     'Continuous Controller: ', CC_NUM, 
     'CC Value: ', CC_VAL)
     sendMIDI({ MIDIMessageType.CONTROLCHANGE + CH_PAGE, CC_NUM, CC_VAL })
   end
+end
+
+
+function update()
 end

@@ -7,20 +7,28 @@ CH_PAGE = tonumber(CHANNEL_PAGE.values.page)
 
 SCALE = 128 / self.properties.steps
 
-CC_NUM = 39 -- Rate Scale CC for OP1, range 39-42
+BASE_CC = 39 -- Rate Scale CC for OP1, range 39-42
+CC_NUM = BASE_CC + OP_NUM
+
+print(
+  '\nPage ID: ', CH_PAGE,
+  '\nOperator ID: ', OP_NUM,
+  '\nBase CC#: ', BASE_CC,
+  '\nCurrent CC#: ', CC_NUM
+)
 
 function onValueChanged(key)
   if key == 'x' then
     local CC_VAL = self.values[key] * SCALE
     print(
-    'MIDI Channel: ', CH_PAGE + 1,
-    'FM Operator: ', OP_NUM + 1,
-    'Continuous Controller: ', CC_NUM + OP_NUM, 
+    'MIDI Channel: ', CH_PAGE,
+    'FM Operator: ', OP_NUM,
+    'Continuous Controller: ', CC_NUM, 
     'CC Value: ', CC_VAL
     )
-    sendMIDI({ 
-      MIDIMessageType.CONTROLCHANGE + CH_PAGE, 
-      CC_NUM + OP_NUM, 
-      CC_VAL })
+    sendMIDI({ MIDIMessageType.CONTROLCHANGE + CH_PAGE, CC_NUM, CC_VAL })
   end
+end
+
+function update()
 end

@@ -5,20 +5,31 @@ CHANNEL_PAGE = OPERATOR_PAGE.parent.parent
 OP_NUM = tonumber(OPERATOR_PAGE.values.page)
 CH_PAGE = tonumber(CHANNEL_PAGE.values.page)
 
-CC_NUM = 59 -- Release Rate CC for OP1, range 59-62
+BASE_CC = 59 -- Release Rate CC for OP1, range 59-62
+CC_NUM = BASE_CC + OP_NUM
+
+print(
+  '\nPage ID: ', CH_PAGE,
+  '\nOperator ID: ', OP_NUM,
+  '\nBase CC#: ', BASE_CC,
+  '\nCurrent CC#: ', CC_NUM
+)
 
 function onValueChanged(key)
   if key == 'x' then
     local CC_VAL = math.ceil(self.values[key] * 128)
     print(
-    'MIDI Channel: ', CH_PAGE + 1,
-    'FM Operator: ', OP_NUM + 1,
-    'Continuous Controller: ', CC_NUM + OP_NUM, 
+    'MIDI Channel: ', CH_PAGE,
+    'FM Operator: ', OP_NUM,
+    'Continuous Controller: ', CC_NUM, 
     'CC Value: ', CC_VAL
     )
     sendMIDI({ 
       MIDIMessageType.CONTROLCHANGE + CH_PAGE, 
-      CC_NUM + OP_NUM, 
+      CC_NUM, 
       CC_VAL })
   end
+end
+
+function update()
 end
