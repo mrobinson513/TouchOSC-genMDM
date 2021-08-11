@@ -2,13 +2,6 @@
 
 BASE_CC = 16  -- Total Level CC for OP1, range 16-19
 
-print(
-  '\nPage ID: ', CH_PAGE,
-  '\nOperator ID: ', OP_NUM,
-  '\nBase CC#: ', BASE_CC,
-  '\nCurrent CC#: ', CC_NUM
-)
-
 function onValueChanged(key)
   if key == 'x' then
     OPERATOR_PAGE = self.parent.parent
@@ -16,15 +9,15 @@ function onValueChanged(key)
     OP_NUM = tonumber(OPERATOR_PAGE.values.page)
     CH_PAGE = tonumber(CHANNEL_PAGE.values.page)
     CC_NUM = BASE_CC + OP_NUM
-    
+
     local CC_VAL = math.ceil(self.values[key] * 128)
     print(
     'MIDI Channel: ', CH_PAGE,
     'FM Operator: ', OP_NUM,
-    'Continuous Controller: ', CC_NUM, 
+    'Continuous Controller: ', CC_NUM,
     'CC Value: ', CC_VAL
     )
-    sendMIDI({ 
+    sendMIDI({
       MIDIMessageType.CONTROLCHANGE + CH_PAGE, CC_NUM, CC_VAL })
   end
 end

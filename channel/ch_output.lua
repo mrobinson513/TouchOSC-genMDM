@@ -6,11 +6,11 @@ SCALE = 128 / self.properties.steps
 function onValueChanged(key)
   if key == 'x' then
     CHANNEL_PAGE = self.parent.parent
-    PAGE = tonumber(channel_page.values.page)
+    PAGE = tonumber(CHANNEL_PAGE.values.page)
     CC_VAL = self.values[key] * SCALE
 
     print(
-    'MIDI Channel: ', PAGE + 1,
+    'MIDI Channel: ', PAGE,
     'Continuous Controller: ', CC_NUM,
     'CC Value: ', CC_VAL)
     sendMIDI({ MIDIMessageType.CONTROLCHANGE + PAGE, CC_NUM, CC_VAL })

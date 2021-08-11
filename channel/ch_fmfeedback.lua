@@ -9,7 +9,7 @@ function onValueChanged(key)
     CC_VAL = math.ceil(self.values[key] * 128)
 
     print(
-    'MIDI Channel: ', PAGE + 1,
+    'MIDI Channel: ', PAGE,
     'Continuous Controller: ', CC_NUM,
     'CC Value: ', CC_VAL)
     sendMIDI({ MIDIMessageType.CONTROLCHANGE + PAGE, CC_NUM, CC_VAL })
