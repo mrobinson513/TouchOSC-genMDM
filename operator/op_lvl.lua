@@ -1,12 +1,6 @@
 -- Control type: Radial
 
-OPERATOR_PAGE = self.parent.parent
-CHANNEL_PAGE = OPERATOR_PAGE.parent.parent
-OP_NUM = tonumber(OPERATOR_PAGE.values.page)
-CH_PAGE = tonumber(CHANNEL_PAGE.values.page)
-
 BASE_CC = 16  -- Total Level CC for OP1, range 16-19
-CC_NUM = BASE_CC + OP_NUM
 
 print(
   '\nPage ID: ', CH_PAGE,
@@ -17,6 +11,12 @@ print(
 
 function onValueChanged(key)
   if key == 'x' then
+    OPERATOR_PAGE = self.parent.parent
+    CHANNEL_PAGE = OPERATOR_PAGE.parent.parent
+    OP_NUM = tonumber(OPERATOR_PAGE.values.page)
+    CH_PAGE = tonumber(CHANNEL_PAGE.values.page)
+    CC_NUM = BASE_CC + OP_NUM
+    
     local CC_VAL = math.ceil(self.values[key] * 128)
     print(
     'MIDI Channel: ', CH_PAGE,

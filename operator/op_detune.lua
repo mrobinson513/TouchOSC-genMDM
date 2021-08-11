@@ -1,23 +1,16 @@
 -- Control type: Radial
 -- Suggest change to Radio with 8 steps
 
-OPERATOR_PAGE = self.parent.parent
-CHANNEL_PAGE = OPERATOR_PAGE.parent.parent
-OP_NUM = tonumber(OPERATOR_PAGE.values.page)
-CH_PAGE = tonumber(CHANNEL_PAGE.values.page)
-
 BASE_CC = 24 -- Detune CC for OP1, range 24-27
-CC_NUM = BASE_CC + OP_NUM
-
-print(
-  '\nPage ID: ', CH_PAGE,
-  '\nOperator ID: ', OP_NUM,
-  '\nBase CC#: ', BASE_CC,
-  '\nCurrent CC#: ', CC_NUM
-)
 
 function onValueChanged(key)
   if key == 'x' then
+    OPERATOR_PAGE = self.parent.parent
+    CHANNEL_PAGE = OPERATOR_PAGE.parent.parent
+    OP_NUM = tonumber(OPERATOR_PAGE.values.page)
+    CH_PAGE = tonumber(CHANNEL_PAGE.values.page)
+    CC_NUM = BASE_CC + OP_NUM
+    
     local CC_VAL = math.ceil(self.values[key] * 128)
     print(
     'MIDI Channel: ', CH_PAGE,
