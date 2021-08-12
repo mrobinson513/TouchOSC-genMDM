@@ -19,7 +19,7 @@ end
 
 function onReceiveNotify(key, value)
   PAGE = tonumber(value['channel'])
-  CC_VAL = tonumber(value['x'])
+  CC_VAL = math.ceil(value['x'] * 127)
 
   print("Updating Control: ", PAGE, CC_NUM, CC_VAL)
   print(
