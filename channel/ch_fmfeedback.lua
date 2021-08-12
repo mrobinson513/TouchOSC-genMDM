@@ -26,5 +26,5 @@ function onReceiveNotify(key, value)
     "CC Number: ", CC_NUM,
     "CC Value: ", CC_VAL
     )
-  --sendMIDI({ MIDIMessageType.CONTROLCHANGE + PAGE, CC_NUM, CC_VAL })
+  sendMIDI({ MIDIMessageType.CONTROLCHANGE + PAGE, CC_NUM, CC_VAL })
 end
