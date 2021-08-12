@@ -29,6 +29,10 @@ If you make changes to the lua files, be sure to test them in your own layout in
 
 In progress. I will eventually develop a thorough doc/tutorial for GenMDM and FM synthesis in general.
 
+* [FM algorithm chart](docs/fm-algo/fm-algo.md)
+* [SSG-EG chart]((docs/ssg-eg/ssg-eg.md))
+
+
 ### Roadmap
 * support poly mode
     * Controls affects all channels instead of one

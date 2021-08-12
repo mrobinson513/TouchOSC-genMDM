@@ -1,5 +1,5 @@
 -- Control type: Radial
--- Suggest change to Radio with 8 steps
+-- Suggest change to Radio with 8 steps?
 
 BASE_CC = 24 -- Detune CC for OP1, range 24-27
 SCALE = 127
