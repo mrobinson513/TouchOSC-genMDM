@@ -26,12 +26,27 @@ function onValueChanged(key)
     print(
     'MIDI Channel: ', CH_PAGE,
     'FM Operator: ', OP_NUM,
-    'Continuous Controller: ', CC_NUM, 
+    'Continuous Controller: ', CC_NUM,
     'CC Value: ', CC_VAL)
     sendMIDI({ MIDIMessageType.CONTROLCHANGE + CH_PAGE, CC_NUM, CC_VAL })
   end
 end
 
 
-function update()
+function onReceiveNotify(key, value)
+  CH_PAGE, OP_NUM = value['channel'], value['op']
+  CC_NUM = BASE_CC + OP_NUM
+
+  if value['x'] > 0 then
+    CC_VAL = SSG_ON + ((value['x'] - 1) * SSG_SCALE)
+  else
+    CC_VAL = 0
+
+  print(
+  'MIDI Channel: ', CH_PAGE,
+  'FM Operator: ', OP_NUM,
+  'Continuous Controller: ', CC_NUM,
+  'CC Value: ', CC_VAL
+  )
+  sendMIDI({ MIDIMessageType.CONTROLCHANGE + CH_PAGE, CC_NUM, CC_VAL })
 end

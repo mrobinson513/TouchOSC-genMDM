@@ -1,6 +1,7 @@
 --control type: Button/Toggle Press
 
 BASE_CC = 70 -- Amp Mod enable CC for OP1, range 70-73
+SCALE = 127
 
 function onValueChanged(key)
     if key == 'x' then
@@ -10,16 +11,27 @@ function onValueChanged(key)
       CH_PAGE = tonumber(CHANNEL_PAGE.values.page)
       CC_NUM = BASE_CC + OP_NUM
 
-      local CC_VAL = self.values[key] * 127
+      CC_VAL = self.values[key] * SCALE
       print(
       'MIDI Channel: ', CH_PAGE,
       'FM Operator: ', OP_NUM,
-      'Continuous Controller: ', CC_NUM, 
+      'Continuous Controller: ', CC_NUM,
       'CC Value: ', CC_VAL
       )
       sendMIDI({ MIDIMessageType.CONTROLCHANGE + CH_PAGE, CC_NUM, CC_VAL })
     end
   end
 
-function update()
+function onReceiveNotify(key, value)
+  CH_PAGE, OP_NUM = value['channel'], value['op']
+  CC_NUM = BASE_CC + OP_NUM
+
+  CC_VAL = update['x'] * SCALE
+  print(
+  'MIDI Channel: ', CH_PAGE,
+  'FM Operator: ', OP_NUM,
+  'Continuous Controller: ', CC_NUM,
+  'CC Value: ', CC_VAL
+  )
+  sendMIDI({ MIDIMessageType.CONTROLCHANGE + CH_PAGE, CC_NUM, CC_VAL })
 end
