@@ -6,7 +6,7 @@ function onValueChanged(key)
   if key == 'x' then
     CHANNEL_PAGE = self.parent.parent
     PAGE = tonumber(CHANNEL_PAGE.values.page)
-    CC_VAL = math.ceil(self.values[key] * 128)
+    CC_VAL = math.ceil(self.values[key] * 127)
 
     print(
     'MIDI Channel: ', PAGE,

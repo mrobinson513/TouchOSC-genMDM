@@ -10,7 +10,7 @@ function onValueChanged(key)
     CH_PAGE = tonumber(CHANNEL_PAGE.values.page)
     CC_NUM = BASE_CC + OP_NUM
 
-    local CC_VAL = math.ceil(self.values[key] * 128)
+    local CC_VAL = math.ceil(self.values[key] * 127)
     print(
     'MIDI Channel: ', CH_PAGE,
     'FM Operator: ', OP_NUM,

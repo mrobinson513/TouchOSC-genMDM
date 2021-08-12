@@ -6,11 +6,11 @@
 -- DANGER ZONE, only use if you don't mind things will sound fucky
 -- Also affects PSG sound chip
 
-CC_NUM = 85 -- Global LFO Enable
+CC_NUM = 85 -- Pitch Transposition
 
 function onValueChanged(key)
   if key == 'x' then
-    CC_VAL = math.ceil(self.values[key] * 128)
+    CC_VAL = math.ceil(self.values[key] * 127)
     print(
     'MIDI Channel: ', PAGE + 1,
     'Continuous Controller: ', CC_NUM, 

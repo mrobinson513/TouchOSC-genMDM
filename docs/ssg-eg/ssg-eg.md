@@ -1,3 +1,7 @@
+## Important
+
+In order for SSG-EG patterns to work, attack rate (AR) must be set to 31 / 127.
+
 |CC# 90-93|Shape|Lower Range|Upper Range|
 |---|---|---|---|
 |Off   |   |0-31   |64-95|
